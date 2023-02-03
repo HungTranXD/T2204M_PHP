@@ -1,12 +1,5 @@
 <?php
 session_start();
-$title = "Tổng hợp tin tức ngày 02-02-2023";
-$sv = [
-    "name" => "Nguyen Van An",
-    "age" => 18,
-    "address" => "Ha Noi"
-];
-$dishes = ["Pho bo", "Pho ga", "Bun"];
 ?>
 
 <!doctype html>
@@ -40,31 +33,31 @@ $dishes = ["Pho bo", "Pho ga", "Bun"];
             </div>
         </div>
     </header>
-
-    <h1><?php echo $title; ?></h1>
-    <h2>Sinh vien: <?php echo $sv["name"]; ?></h2>
-    <p>Dia chi: <?php echo $sv["address"]; ?></p>
-
-    <!--    Dieu kien if    -->
-    <?php if ($sv["age"] >= 18): ?>
-        <p><i>Da tren 18 tuoi</i></p>
-    <?php else: ?>
-        <p><i>Chua du 18 tuoi</i></p>
-    <?php endif; ?>
-
-    <!--Vong lap-->
-    <ul->
-        <?php foreach($dishes as $value): ?>
-            <li><?php echo $value ?></li>
-        <?php endforeach; ?>
-    </ul->
-
-    <a href="demo1.php">Chuyen sang trang demo1</a>
-
+    <section>
+    <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8 mt-3">
+            <div class="row">
+                <h1 class="col-auto display-6">Login</h1>
+                <div class="col"><div class="bg-secondary mt-4" style="height: 1px"></div></div>
+            </div>
+            <form action="post-login.php" method="post">
+                <div class="mb-3">
+                    <label for="inputName" class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" id="inputName" required value="<?php echo isset($_SESSION["username"]) ? $_SESSION["username"] : ''; ?>">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" name="pwd" class="form-control" id="exampleInputPassword1" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    </section>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
