@@ -43,8 +43,35 @@
         <div class="container">
             <h1 class="text-center">All student</h1>
             <div class="row justify-content-center">
-                <div class="col-10">
+                <div class="col-9">
                     <a type="button" class="btn btn-primary" href="createstudent.php">Create student</a>
+                    <form action="searchstudent.php" method="post" class="row justify-content-between gx-0 mt-3">
+                        <div class="col-auto">
+                            <label for="inputNameOrEmail" class="visually-hidden">Name / Email</label>
+                            <input type="text" name="name/email" class="form-control" id="inputNameOrEmail" placeholder="Name / Email">
+                        </div>
+                        <div class="col-auto">
+                            <label for="selectGender" class="visually-hidden">Gender</label>
+                            <select class="form-select" name="gender" aria-label="Default select example" id="selectGender">
+                                <option value="">All gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <label for="inputLowMark" class="visually-hidden">Name / Email</label>
+                            <input type="number" step="0.1" name="lowMark" class="form-control" id="inputLowMark" placeholder="Mark from...">
+                        </div>
+                        <div class="col-auto pt-1">></div>
+                        <div class="col-2">
+                            <label for="inputHighMark" class="visually-hidden">Name / Email</label>
+                            <input type="number" step="0.1" name="highMark" class="form-control" id="inputHighMark" placeholder="to...">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-outline-primary">Search</button>
+                        </div>
+                    </form>
                     <table class="table table-striped table-border">
                         <thead>
                             <th>id</th>
