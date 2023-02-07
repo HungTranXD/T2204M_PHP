@@ -1,29 +1,11 @@
 <?php
-    //Connect to database
-    $db = "t2204m-java1";
-    $host = "localhost";
-    $user = "root";
-    $pwd = "";
+//    include_once("3_database.php");
+//    $sql = "SELECT * FROM students";
+//    $data = querry($sql);
+    include_once ("models/Student.php");
+    $st = new Student();
+    $data = $st->get();
 
-    $conn = new mysqli($host, $user, $pwd, $db);
-
-    //Ket noi khong thanh cong
-    if($conn->connect_error) {
-        echo $conn->error;
-        die();
-    }
-
-    //Ket noi thanh cong
-    $sql = "SELECT * FROM students";
-    $rs = $conn->query($sql);
-//    var_dump($rs); die(); //debug code
-    $data = [];
-    if ($rs->num_rows > 0) {
-        while ($row = $rs->fetch_assoc()) {
-//            var_dump($row); die();
-            $data[] = $row;
-        }
-    }
 ?>
 
 
@@ -43,7 +25,7 @@
         <div class="container">
             <h1 class="text-center">All student</h1>
             <div class="row justify-content-center">
-                <div class="col-9">
+                <div class="col-7">
                     <a type="button" class="btn btn-primary" href="createstudent.php">Create student</a>
                     <form action="searchstudent.php" method="post" class="row justify-content-between gx-0 mt-3">
                         <div class="col-auto">
@@ -60,12 +42,12 @@
                             </select>
                         </div>
                         <div class="col-2">
-                            <label for="inputLowMark" class="visually-hidden">Name / Email</label>
+                            <label for="inputLowMark" class="visually-hidden">Low mark</label>
                             <input type="number" step="0.1" name="lowMark" class="form-control" id="inputLowMark" placeholder="Mark from...">
                         </div>
                         <div class="col-auto pt-1">></div>
                         <div class="col-2">
-                            <label for="inputHighMark" class="visually-hidden">Name / Email</label>
+                            <label for="inputHighMark" class="visually-hidden">High mark</label>
                             <input type="number" step="0.1" name="highMark" class="form-control" id="inputHighMark" placeholder="to...">
                         </div>
                         <div class="col-auto">
@@ -84,18 +66,18 @@
                         <tbody>
                             <?php foreach ($data as $item) : ?>
                                 <tr>
-                                    <td><?php echo $item["id"] ?></td>
-                                    <td><?php echo $item["name"] ?></td>
-                                    <td><?php echo $item["email"] ?></td>
-                                    <td><?php echo $item["mark"] ?></td>
-                                    <td><?php echo $item["gender"] ?></td>
+                                    <td><?php echo $item->id ?></td>
+                                    <td><?php echo $item->name ?></td>
+                                    <td><?php echo $item->email ?></td>
+                                    <td><?php echo $item->mark ?></td>
+                                    <td><?php echo $item->gender ?></td>
                                     <td>
-                                        <a type="button" class="btn btn-success btn-sm" href="editstudent.php?id=<?php echo $item["id"] ?>">Edit</a>
+                                        <a type="button" class="btn btn-success btn-sm" href="editstudent.php?id=<?php echo $item->id ?>">Edit</a>
                                         <!-- Cach 1 -->
-                                        <a onclick="return confirm('Are you sure you want to delete student with ID = <?php echo $item["id"] ?>')" type="button" class="btn btn-danger btn-sm" href="deletestudent.php?id=<?php echo $item["id"] ?>">Delete</a>
+                                        <a onclick="return confirm('Are you sure you want to delete student with ID = <?php echo $item->id ?>')" type="button" class="btn btn-danger btn-sm" href="deletestudent.php?id=<?php echo $item->id ?>">Delete</a>
                                         <!-- Cach 2 (an toan hơn) -->
                                         <form action="deletestudent.php" method="post">
-                                            <input type="hidden" name="id" value="<?php echo $item["id"] ?>">
+                                            <input type="hidden" name="id" value="<?php echo $item->id->id ?>">
                                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                         </form>
                                     </td>

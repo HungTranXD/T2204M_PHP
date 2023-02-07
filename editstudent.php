@@ -1,35 +1,15 @@
 <?php
+    include_once ("3_database.php");
+
     //Lay id sinh vien muon sua tu tham so
     $editID = $_GET["id"];
 
-    //Ket noi csdl de lay thong tin sv co id tren
-    $db = "t2204m-java1";
-    $host = "localhost";
-    $user = "root";
-    $pwd = "";
-
-    $conn = new mysqli($host, $user, $pwd, $db);
-
-    //Ket noi khong thanh cong
-    if($conn->connect_error) {
-        echo $conn->error;
-        die();
-    }
-
-    //Ket noi thanh cong
     $sql = "SELECT * FROM students WHERE id = $editID";
-    $rs = $conn->query($sql);
-//    var_dump($rs); die(); //debug code
-    $data = null;
-    if ($rs->num_rows > 0) {
-        while ($row = $rs->fetch_assoc()) {
-//            var_dump($row); die();
-            $data = $row;
-        }
-    }
-    if($data == null) {
+    $data = querry($sql);
+    if (count($data) == 0) {
         die("404 not found!");
     }
+    $data =$data[0];
 ?>
 
 <!doctype html>

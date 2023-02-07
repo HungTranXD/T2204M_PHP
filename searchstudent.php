@@ -47,7 +47,7 @@ if($result->num_rows > 0){
     <div class="container">
         <h1 class="text-center">Search results (<?php echo count($data) ?> results)</h1>
         <div class="row justify-content-center">
-            <div class="col-9">
+            <div class="col-7">
                 <form action="searchstudent.php" method="post" class="row justify-content-between gx-0 mt-3">
                     <div class="col-auto">
                         <label for="inputNameOrEmail" class="visually-hidden">Name / Email</label>
